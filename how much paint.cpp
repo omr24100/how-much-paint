@@ -2,26 +2,40 @@
 //
 
 #include <iostream>
-#include <cmath>
+#include <cmath>  // for ceil() function
+
 using namespace std;
 
-int main()
-{
-    double height = 6.0;
-    double length = 100.0;
-    double coveragePerGallon = 340.0;
-    int numberofcoats = 2;
+int main() {
+    // Constants
+    const double COVERAGE_PER_GALLON = 340.0; // Square feet per gallon
+    const int COATS = 2;  // Number of coats of paint
 
-    double areapercoast = height * length;
-    double totalarea = areapercoast * numberofcoats;
+    // Declare variables for user input
+    double height, length;
 
-    double gallonsneeded = totalarea / coveragePerGallon;
-    int roundedgallons = ceil(gallonsneeded);
+    // Prompt the user for the size of the fence
+    cout << "Enter the height of the fence in feet: ";
+    cin >> height;
 
-    cout << "for" << numberofcoats << "coats of paint that is needed" << roundedgallons << " gallons of paint." << endl;
+    cout << "Enter the length of the fence in feet: ";
+    cin >> length;
+
+    // Calculate the total area to be painted (2 coats)
+    double totalArea = height * length * COATS;
+
+    // Calculate the number of gallons required (rounding up to the nearest whole gallon)
+    double gallonsNeeded = totalArea / COVERAGE_PER_GALLON;
+
+    // Round up to ensure we get enough paint
+    gallonsNeeded = ceil(gallonsNeeded);
+
+    // Display the result
+    cout << "Gallons of paint needed: " << gallonsNeeded << endl;
 
     return 0;
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
